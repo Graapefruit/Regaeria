@@ -10,4 +10,8 @@ public class Pair<T, G> {
         this.x = x; 
         this.z = z;
     }
+
+    public override string ToString() {
+        return "(" + x + ", " + z + ")";
+    }
 }
