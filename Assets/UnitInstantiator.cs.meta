@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: d7fa80ed599861a48ab1d9a6b8afee8a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - unitPrefab: {fileID: 7591605020104221586, guid: 236275d71651cb149b252d0b50b409ed, type: 3}
+  - morozilInfo: {fileID: 11400000, guid: 5b00c32ddc2ea624c89e6da4714bf445, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

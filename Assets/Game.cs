@@ -16,7 +16,13 @@ public class Game : MonoBehaviour
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit)) {
-            board.setTileAsHovered(hit.point);
+            if (Input.GetMouseButton(0)) {
+                board.setTileAsSelected(hit.point);
+            } else if (Input.GetMouseButton(1)) {
+                board.doMove(hit.point);
+            } else {
+                board.setTileAsHovered(hit.point);
+            }
         }
     }
 }
