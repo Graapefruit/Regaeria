@@ -9,7 +9,7 @@ public class Game : MonoBehaviour
     private Board board;
     private GameObject player;
     void Awake() {
-        StatBlockReference selectedUnit = new StatBlockReference();
+        Reference<UnitStatBlock> selectedUnit = new Reference<UnitStatBlock>();
         board = new Board(tilePrefab, selectedUnit);
         player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
         player.GetComponent<PlayerController>().board = board;

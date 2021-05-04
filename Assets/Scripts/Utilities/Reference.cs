@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StatBlockReference {
-    public UnitStatBlock statBlock;
+public class Reference<T> {
+    public T reference;
 }

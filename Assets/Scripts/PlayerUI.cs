@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public StatBlockReference selectedUnit;
+    public Reference<UnitStatBlock> selectedUnit;
     private Text unitName;
     private Text unitHealth;
 
@@ -21,13 +21,13 @@ public class PlayerUI : MonoBehaviour
     }
 
     private void updateUnitCard() {
-        if (selectedUnit.statBlock == null) {
+        if (selectedUnit.reference == null) {
             unitName.text = "No Unit Selected";
             unitHealth.gameObject.SetActive(false);
         } else {
-            unitName.text = selectedUnit.statBlock.baseStats.unitName;
+            unitName.text = selectedUnit.reference.baseStats.unitName;
             unitHealth.gameObject.SetActive(true);
-            unitHealth.text = "Health: " + selectedUnit.statBlock.currentHp;
+            unitHealth.text = "Health: " + selectedUnit.reference.currentHp;
         }
     }
 }

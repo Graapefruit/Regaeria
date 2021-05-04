@@ -21,9 +21,9 @@ public class Board {
     private Tile[,] board;
     private Tile currentlyHovered;
     private Tile currentlySelected;
-    private StatBlockReference selectedUnit;
+    private Reference<UnitStatBlock> selectedUnit;
 
-    public Board(GameObject tilePrefab, StatBlockReference selectedUnit) {
+    public Board(GameObject tilePrefab, Reference<UnitStatBlock> selectedUnit) {
         board = new Tile[BOARD_SIZE, BOARD_SIZE];
         this.selectedUnit = selectedUnit;
         initializeBoard(tilePrefab);
@@ -57,9 +57,9 @@ public class Board {
             }
             currentlySelected = board[tileIndices.x, tileIndices.z];
             if (currentlySelected.unit != null) {
-                selectedUnit.statBlock = currentlySelected.unit.unitStats;
+                selectedUnit.reference = currentlySelected.unit.unitStats;
             } else {
-                selectedUnit.statBlock = null;
+                selectedUnit.reference = null;
             }
             currentlySelected.Selected = true;
         }
