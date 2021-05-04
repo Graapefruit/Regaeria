@@ -6,6 +6,7 @@ public class Tile : MonoBehaviour {
     private static readonly Color DEFAULT_COLOUR = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     private static readonly Color HIGHLIGHTED_COLOUR = new Color(0.9f, 0.9f, 0.9f, 1.0f);
     private static readonly Color SELECTED_COLOUR = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+    public Unit unit;
     public bool Highlighted {
         get { return highlighted; }
         set { 
@@ -22,16 +23,12 @@ public class Tile : MonoBehaviour {
             transform.GetComponent<SpriteRenderer>().color = (selected ? SELECTED_COLOUR : (highlighted ? HIGHLIGHTED_COLOUR : DEFAULT_COLOUR));
         }
     }
-    public Unit Unit {
-        get { return unit; }
-        set { 
-            unit = value; 
-            if (unit != null) {
-                unit.transform.position = transform.position;
-            }
-        }
-    }
     private bool highlighted;
     private bool selected;
-    private Unit unit;
+
+    void Update() {
+        if (unit != null) {
+            unit.transform.position = transform.position;
+        }
+    }
 }

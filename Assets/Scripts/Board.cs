@@ -21,9 +21,11 @@ public class Board {
     private Tile[,] board;
     private Tile currentlyHovered;
     private Tile currentlySelected;
+    private StatBlockReference selectedUnit;
 
-    public Board(GameObject tilePrefab) {
+    public Board(GameObject tilePrefab, StatBlockReference selectedUnit) {
         board = new Tile[BOARD_SIZE, BOARD_SIZE];
+        this.selectedUnit = selectedUnit;
         initializeBoard(tilePrefab);
     }
 
@@ -54,6 +56,11 @@ public class Board {
                 currentlySelected.Selected = false;
             }
             currentlySelected = board[tileIndices.x, tileIndices.z];
+            if (currentlySelected.unit != null) {
+                selectedUnit.statBlock = currentlySelected.unit.unitStats;
+            } else {
+                selectedUnit.statBlock = null;
+            }
             currentlySelected.Selected = true;
         }
     }
@@ -69,12 +76,11 @@ public class Board {
 
     private void moveUnit(Tile source, Tile destination) {
         if (source != destination) {
-            destination.Unit = source.Unit;
-            source.Unit = null;
+            destination.unit = source.unit;
+            source.unit = null;
             source.Selected = false;
             destination.Selected = true;
             currentlySelected = destination;
-            Debug.Log(currentlySelected.Unit);
         }
     }
 
@@ -138,6 +144,5 @@ public class Board {
                 board[x, z].gameObject.transform.localScale = new Vector3(TILE_SCALE, TILE_SCALE, TILE_SCALE);
             }
         }
-        board[5, 5].Unit = UnitInstantiator.createNewMorozil();
     }
 }

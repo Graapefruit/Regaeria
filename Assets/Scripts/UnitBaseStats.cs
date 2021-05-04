@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitInfo", menuName = "ScriptableObjects/UnitInfo")]
-public class UnitInfo : ScriptableObject {
-    new public string name;
-    public GameObject prefab;
-    public int speed;
+public class UnitBaseStats : ScriptableObject {
+    public string unitName;
+    public int baseSpeed;
+    public int baseHp;
 }

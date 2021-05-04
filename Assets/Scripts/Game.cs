@@ -4,25 +4,19 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    new public Camera camera;
     public GameObject tilePrefab;
+    public GameObject playerPrefab;
     private Board board;
-    void Start() {
-        board = new Board(tilePrefab);
+    private GameObject player;
+    void Awake() {
+        StatBlockReference selectedUnit = new StatBlockReference();
+        board = new Board(tilePrefab, selectedUnit);
+        player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity);
+        player.GetComponent<PlayerController>().board = board;
+        player.transform.Find("PlayerUI").GetComponent<PlayerUI>().selectedUnit = selectedUnit;
     }
 
     // Update is called once per frame
     void Update() {
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit)) {
-            if (Input.GetMouseButton(0)) {
-                board.setTileAsSelected(hit.point);
-            } else if (Input.GetMouseButton(1)) {
-                board.doMove(hit.point);
-            } else {
-                board.setTileAsHovered(hit.point);
-            }
-        }
     }
 }
