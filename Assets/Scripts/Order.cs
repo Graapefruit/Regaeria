@@ -1,0 +1,80 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Order : MonoBehaviour {
+    // TODO: Float Reference
+    public float board_scale = 0.6f;
+    public GameObject arrowStartPrefab;
+    public GameObject arrowStraightPrefab;
+    public GameObject arrowBendWidePrefab;
+    public GameObject arrowBendTightPrefab;
+    public GameObject arrowEndPrefab;
+    private Unit unit;
+    private List<GameObject> arrowSegments;
+    private List<Tile> tiles;
+
+    public void assign(Unit unit, List<Tile> tiles) {
+        this.unit = unit;
+        this.tiles = tiles;
+        this.arrowSegments = new List<GameObject>();
+        createArrows();
+    }
+
+    private void createArrows() {
+        for (int i = 0; i < tiles.Count; i++) {
+            Vector3 pos = tiles[i].transform.position;
+            pos.y += 0.5f;
+            GameObject prefab;
+            Quaternion rot;
+
+            if (i == tiles.Count - 1) {
+                int direction = AdjacencyHelper.getConnection(tiles[i].index, tiles[i-1].index);
+                prefab = arrowEndPrefab;
+                rot = Quaternion.Euler(90.0f, (direction - 3) * 60.0f, 0.0f);
+            } else if (i == 0) {
+                int direction = AdjacencyHelper.getConnection(tiles[i].index, tiles[i+1].index);
+                prefab = arrowStartPrefab;
+                rot = Quaternion.Euler(90.0f, direction * 60.0f, 0.0f);
+            } else {
+                int directionPrevious = AdjacencyHelper.getConnection(tiles[i].index, tiles[i-1].index);
+                int directionNext = AdjacencyHelper.getConnection(tiles[i].index, tiles[i+1].index);
+                prefab = getPrefabMiddle(directionPrevious, directionNext, out rot);
+            }
+            GameObject arrowSegment = Instantiate(prefab, pos, rot);
+            arrowSegment.transform.localScale = new Vector3(board_scale, board_scale, board_scale);
+            arrowSegment.transform.SetParent(transform, true);
+            arrowSegments.Add(arrowSegment);
+        }
+    }
+
+    private GameObject getPrefabMiddle(int directionPrevious, int directionNext, out Quaternion rot) {
+        GameObject prefab;
+        rot = Quaternion.Euler(90.0f, (directionPrevious - 3) * 60.0f, 0.0f);
+        int directionDifference = Mathf.Abs(directionNext - directionPrevious);
+        switch (directionDifference) {
+            case 0:
+                prefab = arrowStartPrefab;
+                break;
+            case 1:
+                prefab = arrowBendTightPrefab;
+                break;
+            case 2:
+                prefab = arrowBendWidePrefab;
+                break;
+            case 3:
+                prefab = arrowStraightPrefab;
+                break;
+            case 4:
+                prefab = arrowBendWidePrefab;
+                break;
+            case 5:
+                prefab = arrowStraightPrefab;
+                break;
+            default:
+                prefab = null;
+                break;
+        }
+        return prefab;
+    }
+}

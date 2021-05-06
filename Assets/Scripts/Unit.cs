@@ -9,6 +9,5 @@ public class Unit : MonoBehaviour {
     void Awake() {
         unitStats = ScriptableObject.CreateInstance("UnitStatBlock") as UnitStatBlock;
         unitStats.initializeStats(baseStats);
-        Debug.Log(unitStats.baseStats);
     }
 }

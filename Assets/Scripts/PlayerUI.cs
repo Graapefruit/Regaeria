@@ -5,17 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public Reference<UnitStatBlock> selectedUnit;
+    public StatBlockReference selectedUnit;
     private Text unitName;
     private Text unitHealth;
 
     void Awake() {
         this.unitName = this.transform.Find("UnitName").GetComponent<Text>();
         this.unitHealth = this.transform.Find("UnitHealth").GetComponent<Text>();
-        Debug.Log(unitName);
     }
 
-    // Update is called once per frame
     void Update() {
         updateUnitCard();
     }
