@@ -50,9 +50,9 @@ public class Order : MonoBehaviour {
 
     private GameObject getPrefabMiddle(int directionPrevious, int directionNext, out Quaternion rot) {
         GameObject prefab;
-        rot = Quaternion.Euler(90.0f, (directionPrevious - 3) * 60.0f, 0.0f);
-        int directionDifference = Mathf.Abs(directionNext - directionPrevious);
-        switch (directionDifference) {
+        float yRotation = (directionPrevious - 3) * 60.0f;
+        int directionDifference = directionPrevious - directionNext;
+        switch (Mathf.Abs(directionDifference)) {
             case 0:
                 prefab = arrowStartPrefab;
                 break;
@@ -75,6 +75,17 @@ public class Order : MonoBehaviour {
                 prefab = null;
                 break;
         }
+        
+        if (prefab == arrowBendTightPrefab) {
+            if (directionDifference == -1 || directionDifference == 5) {
+                yRotation += 60.0f;
+            }
+        } else if (arrowBendWidePrefab) {
+            if (directionDifference == -2 || directionDifference == 4) {
+                yRotation += 120.0f;
+            }
+        }
+        rot = Quaternion.Euler(90.0f, yRotation, 0.0f);
         return prefab;
     }
 }

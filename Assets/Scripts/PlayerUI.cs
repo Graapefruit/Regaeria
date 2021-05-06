@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    public StatBlockReference selectedUnit;
+    public UnitReference selectedUnit;
     private Text unitName;
     private Text unitHealth;
 
@@ -25,7 +25,7 @@ public class PlayerUI : MonoBehaviour
         } else {
             unitName.text = selectedUnit.reference.baseStats.unitName;
             unitHealth.gameObject.SetActive(true);
-            unitHealth.text = "Health: " + selectedUnit.reference.currentHp;
+            unitHealth.text = "Health: " + selectedUnit.reference.unitStats.currentHp;
         }
     }
 }

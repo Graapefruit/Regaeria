@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Morozil
   m_EditorClassIdentifier: 
   unitName: Morozil
-  baseSpeed: 0
-  baseHp: 0
+  baseSpeed: 4
+  baseHp: 25
