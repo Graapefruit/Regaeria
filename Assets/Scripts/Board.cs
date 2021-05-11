@@ -62,9 +62,9 @@ public class Board : MonoBehaviour {
     // }
 
     public Tile getRespectiveTile(Vector3 point) {
-        if (pointInBounds(point)) {
-            int xIndex = Mathf.FloorToInt((point.x - GRID_LEFT_EDGE) / LAZY_BOX_LENGTH);
-            int zIndex = Mathf.FloorToInt((GRID_TOP_EDGE - point.z + ((xIndex % 2) * -TILE_SCALE)) / LAZY_BOX_HEIGHT);
+        int xIndex = Mathf.FloorToInt((point.x - GRID_LEFT_EDGE) / LAZY_BOX_LENGTH);
+        int zIndex = Mathf.FloorToInt((GRID_TOP_EDGE - point.z + ((xIndex % 2) * -TILE_SCALE)) / LAZY_BOX_HEIGHT);
+        if (tileExists(new Pair<int, int>(xIndex, zIndex))) {
             return updateIndexFromLazyBoxToHexagon(point, xIndex, zIndex);
         } else {
             return null;
