@@ -71,7 +71,7 @@ public class Board : MonoBehaviour {
         }
     }
 
-    public List<Tile> getPath(Tile source, Tile destination) {
+    public List<Tile> getPath(Tile source, Tile destination, int maxDepth) {
         if (source == null || destination == null) {
             return null;
         }
@@ -80,7 +80,9 @@ public class Board : MonoBehaviour {
         while(!queue.isEmpty()) {
             List<Tile> path;
             Tile tile = queue.pop(out path);
-            if (tile == destination) {
+            if (path.Count-1 > maxDepth) {
+                return null;
+            } else if (tile == destination) {
                 return path;
             }
             List<Tile> neighbours = getNeighbours(tile);

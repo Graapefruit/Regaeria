@@ -17,12 +17,34 @@ public class OrderHandler : MonoBehaviour {
             return;
         }
         Unit unit = source.unit;
-        List<Tile> path = board.getPath(source, destination);
-        Order order = Instantiate(orderPrefab, source.transform.position, Quaternion.identity).GetComponent<Order>();
         if (orders.ContainsKey(unit)) {
             Destroy(orders[unit].gameObject);
+            orders.Remove(unit);
         }
-        orders[unit] = order;
-        order.assign(unit, path);
+        List<Tile> path = board.getPath(source, destination, unit.baseStats.baseSpeed);
+        if (path != null) {
+            Order order = Instantiate(orderPrefab, source.transform.position, Quaternion.identity).GetComponent<Order>();
+            order.assign(board, unit, path);
+            orders[unit] = order;
+        }
+    }
+
+    public void doTurn() {
+        for (int initiative = 0; initiative < 6; initiative++) {
+            ActionList actionList = new ActionList();
+            foreach(KeyValuePair<Unit, Order> unitOrder in orders) {
+                if (unitOrder.Key.baseStats.initiatives.hasInitiativeAtIndex(initiative)) {
+                    Action newAction = unitOrder.Value.getAction();
+                    if (newAction != null) {
+                        actionList.addAction(newAction);
+                    }
+                }
+            }
+            actionList.doActions();
+        }
+        foreach(KeyValuePair<Unit, Order> unitOrder in orders) {
+            Destroy(orders[unitOrder.Key].gameObject);
+        }
+        orders = new Dictionary<Unit, Order>();
     }
 }

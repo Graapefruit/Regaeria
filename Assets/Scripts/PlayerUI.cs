@@ -25,7 +25,7 @@ public class PlayerUI : MonoBehaviour
         } else {
             unitName.text = selectedUnit.reference.baseStats.unitName;
             unitHealth.gameObject.SetActive(true);
-            unitHealth.text = "Health: " + selectedUnit.reference.unitStats.currentHp;
+            unitHealth.text = "Health: " + selectedUnit.reference.currentStats.currentHp;
         }
     }
 }

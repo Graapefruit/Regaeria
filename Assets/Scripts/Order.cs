@@ -10,18 +10,31 @@ public class Order : MonoBehaviour {
     public GameObject arrowBendWidePrefab;
     public GameObject arrowBendTightPrefab;
     public GameObject arrowEndPrefab;
+    private Board board;
     private Unit unit;
     private List<GameObject> arrowSegments;
     private List<Tile> tiles;
 
-    public void assign(Unit unit, List<Tile> tiles) {
+    public void assign(Board board, Unit unit, List<Tile> tiles) {
+        this.board = board;
         this.unit = unit;
         this.tiles = tiles;
         this.arrowSegments = new List<GameObject>();
-        createArrows();
+        createArrows(tiles);
     }
 
-    private void createArrows() {
+    public Action getAction() {
+        if (tiles.Count == 1) {
+            return null;
+        }
+        return new Action(unit, tiles[0], tiles[1], this);
+    }
+
+    public void popAction() {
+        tiles.RemoveAt(0);
+    }
+
+    private void createArrows(List<Tile> tiles) {
         for (int i = 0; i < tiles.Count; i++) {
             Vector3 pos = tiles[i].transform.position;
             pos.y += 0.5f;

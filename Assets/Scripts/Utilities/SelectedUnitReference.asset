@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea9bd76a22d0bf54c999813c548fe8ac, type: 3}
-  m_Name: SelectedUnitStatBlockReference
+  m_Name: SelectedUnitReference
   m_EditorClassIdentifier: 
   reference: {fileID: 0}

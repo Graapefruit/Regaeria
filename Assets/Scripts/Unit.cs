@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour {
     public UnitBaseStats baseStats;
-    public UnitStatBlock unitStats;
+    public UnitStatBlock currentStats;
 
     void Awake() {
-        unitStats = ScriptableObject.CreateInstance("UnitStatBlock") as UnitStatBlock;
-        unitStats.initializeStats(baseStats);
+        currentStats = ScriptableObject.CreateInstance("UnitStatBlock") as UnitStatBlock;
+        currentStats.initializeStats(baseStats);
     }
 }
