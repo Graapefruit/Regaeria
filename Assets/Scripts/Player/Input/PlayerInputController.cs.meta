@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: e1431d3db6804744e9c76befa5cb53a2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - wasdShift: {fileID: 11400000, guid: e725e4174bfc1704b9bd807a4f24ca14, type: 2}
+  - scrollShift: {fileID: 11400000, guid: 2f6f53b95b7592e4782de5d1fbeee022, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

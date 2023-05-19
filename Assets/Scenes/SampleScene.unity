@@ -303,6 +303,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1088062538648639153, guid: e27edf7ee1d34734a80c6265048f60b5, type: 3}
+      propertyPath: wasdShift
+      value: 
+      objectReference: {fileID: 11400000, guid: e725e4174bfc1704b9bd807a4f24ca14, type: 2}
+    - target: {fileID: 1088062538648639153, guid: e27edf7ee1d34734a80c6265048f60b5, type: 3}
+      propertyPath: scrollShift
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f6f53b95b7592e4782de5d1fbeee022, type: 2}
     - target: {fileID: 1898395981373773388, guid: e27edf7ee1d34734a80c6265048f60b5, type: 3}
       propertyPath: selectedUnit
       value: 
@@ -371,6 +379,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6881044860851657693, guid: e27edf7ee1d34734a80c6265048f60b5, type: 3}
+      propertyPath: wasdShift
+      value: 
+      objectReference: {fileID: 11400000, guid: e725e4174bfc1704b9bd807a4f24ca14, type: 2}
+    - target: {fileID: 6881044860851657693, guid: e27edf7ee1d34734a80c6265048f60b5, type: 3}
+      propertyPath: scrollShift
+      value: 
+      objectReference: {fileID: 11400000, guid: 2f6f53b95b7592e4782de5d1fbeee022, type: 2}
     - target: {fileID: 7256451108727661299, guid: e27edf7ee1d34734a80c6265048f60b5, type: 3}
       propertyPath: board
       value: 
