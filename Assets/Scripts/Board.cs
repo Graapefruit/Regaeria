@@ -55,12 +55,6 @@ public class Board : MonoBehaviour {
         initializeBoard(tilePrefab);
     }
 
-    // public Board(GameObject tilePrefab, Reference<UnitStatBlock> selectedUnit) {
-    //     board = new Tile[BOARD_SIZE, BOARD_SIZE];
-    //     this.selectedUnit = selectedUnit;
-    //     initializeBoard(tilePrefab);
-    // }
-
     public Tile getRespectiveTile(Vector3 point) {
         int xIndex = Mathf.FloorToInt((point.x - GRID_LEFT_EDGE) / LAZY_BOX_LENGTH);
         int zIndex = Mathf.FloorToInt((GRID_TOP_EDGE - point.z + ((xIndex % 2) * -TILE_SCALE)) / LAZY_BOX_HEIGHT);

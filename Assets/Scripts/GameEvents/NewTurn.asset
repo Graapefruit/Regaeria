@@ -9,16 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f04115d044124479ab83e448ebc070, type: 3}
-  m_Name: Morozil
+  m_Script: {fileID: 11500000, guid: 2239d55ddf8c66140ab386d274b000d7, type: 3}
+  m_Name: NewTurn
   m_EditorClassIdentifier: 
-  unitName: Morozil
-  initiatives:
-    vanguard: 0
-    early: 1
-    middle: 1
-    secondMiddle: 1
-    late: 1
-    final: 0
-  baseHp: 25
-  baseSpeed: 4

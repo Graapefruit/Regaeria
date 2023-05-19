@@ -27,7 +27,11 @@ public class Order : MonoBehaviour {
         if (tiles.Count == 1) {
             return null;
         }
-        return new Action(unit, tiles[0], tiles[1], this);
+        return new Action(unit, tiles[1], this);
+    }
+
+    public Tile getCurrentTile() {
+        return tiles[0];
     }
 
     public void popAction() {

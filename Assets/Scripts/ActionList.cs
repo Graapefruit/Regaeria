@@ -13,11 +13,14 @@ public class ActionList {
         }
         actions[action.dest].Add(action);
     }
-    public void doActions() {
+    public List<ActionRecord> doActions() {
         // TODO
+        List<ActionRecord> actionRecords = new List<ActionRecord>();
         foreach(KeyValuePair<Tile, List<Action>> actionsPerDestination in actions) {
             Action action = actionsPerDestination.Value[0];
-            action.doAction();
+            ActionRecord actionRecord = action.doAction();
+            actionRecords.Add(actionRecord);
         }
+        return actionRecords;
     }
 }

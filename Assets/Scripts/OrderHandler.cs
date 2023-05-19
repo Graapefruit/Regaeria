@@ -6,9 +6,11 @@ public class OrderHandler : MonoBehaviour {
     public GameObject orderPrefab;
     private Dictionary<Unit, Order> orders;
     private Board board;
+    private PastActionManager pastActionManager;
 
     void Awake() {
         board = transform.GetComponent<Board>();
+        pastActionManager = transform.GetComponent<PastActionManager>();
         orders = new Dictionary<Unit, Order>();
     }
 
@@ -30,6 +32,20 @@ public class OrderHandler : MonoBehaviour {
     }
 
     public void doTurn() {
+        resetLastTurnRecords();
+        doAllOrders();
+        clearOrders();
+    }
+
+    private void resetLastTurnRecords() {
+        pastActionManager.resetLastTurnRecords();
+        List<ActionRecord> actions = new List<ActionRecord>();
+        foreach(KeyValuePair<Unit, Order> unitOrder in orders) {
+            actions.Add(new ActionRecord(unitOrder.Key, unitOrder.Value.getCurrentTile()));
+        }
+    }
+
+    private void doAllOrders() {
         for (int initiative = 0; initiative < 6; initiative++) {
             ActionList actionList = new ActionList();
             foreach(KeyValuePair<Unit, Order> unitOrder in orders) {
@@ -40,8 +56,13 @@ public class OrderHandler : MonoBehaviour {
                     }
                 }
             }
-            actionList.doActions();
+            List<ActionRecord> thisInitiativeActions = actionList.doActions();
+            pastActionManager.populateInitiativeActions(initiative, thisInitiativeActions);
         }
+        pastActionManager.markTurnAsFinished();
+    }
+
+    private void clearOrders() {
         foreach(KeyValuePair<Unit, Order> unitOrder in orders) {
             Destroy(orders[unitOrder.Key].gameObject);
         }
