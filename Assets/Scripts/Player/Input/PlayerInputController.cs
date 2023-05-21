@@ -40,7 +40,7 @@ public class PlayerInputController : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             leftMouseDownEvent.Raise();
         }
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(1)) {
             rightMouseDownEvent.Raise();
         }
     }
