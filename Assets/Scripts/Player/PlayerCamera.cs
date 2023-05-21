@@ -6,6 +6,7 @@ public class PlayerCamera : MonoBehaviour
 {
     public Vector2Reference wasdShift;
     public FloatReference scrollShift;
+    public Vector3Reference projectedMousePosition;
     private float maxHeight;
     private float minHeight;
     private const float DIAGONAL_SPEED_MODIFIER = 0.7071f; // 1 over root 2, via pythagoras
@@ -31,5 +32,18 @@ public class PlayerCamera : MonoBehaviour
         scrollDelta = (transform.position.y + scrollDelta > maxHeight ? maxHeight - transform.position.y : scrollDelta);
         scrollDelta = (transform.position.y + scrollDelta < minHeight ? transform.position.y - minHeight : scrollDelta);
         transform.position += new Vector3(wasdMovement.x * movementModifier, scrollDelta, wasdMovement.y * movementModifier);
+
+        handleMouseMovement();
+    }
+
+    private void handleMouseMovement()
+    {
+        Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit)) {
+            projectedMousePosition.set(hit.point);
+        } else {
+            projectedMousePosition.set(null);
+        }
     }
 }

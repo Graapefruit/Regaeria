@@ -5,26 +5,39 @@ using UnityEngine;
 public class BoardInputHandler : MonoBehaviour
 {
     private Board board;
+    public Vector3Reference projectedMousePosition;
     private OrderHandler orderHandler;
+
     void Awake() {
         board = transform.GetComponent<Board>();
         orderHandler = transform.GetComponent<OrderHandler>();
     }
-    public void setTileAsHovered(Vector3 point) {
-        Tile tile = board.getRespectiveTile(point);
-        board.CurrentlyHovered = tile;
+
+    void Update() {
+        setTileAsHovered();
     }
 
-    public void setTileAsSelected(Vector3 point) {
-        Tile tile = board.getRespectiveTile(point);
-        board.CurrentlySelected = tile;
+    public void setTileAsSelected() {
+        if (projectedMousePosition.get() != null) {
+            Tile tile = board.getRespectiveTile(projectedMousePosition.get().Value);
+            board.CurrentlySelected = tile;
+        }
     }
 
-    public void doMove(Vector3 point) {
-        Tile currentlySelected = board.CurrentlySelected;
-        Tile currentlyHovered = board.CurrentlyHovered;
-        if (currentlySelected != null && currentlyHovered != null && currentlySelected.unit != null) {
-            orderHandler.createOrder(currentlySelected, currentlyHovered);
+    public void doMove() {
+        if (projectedMousePosition.get() != null) {
+            Tile currentlySelected = board.CurrentlySelected;
+            Tile currentlyHovered = board.CurrentlyHovered;
+            if (currentlySelected != null && currentlyHovered != null && currentlySelected.unit != null) {
+                orderHandler.createOrder(currentlySelected, currentlyHovered);
+            }
+        }
+    }
+
+    private void setTileAsHovered() {
+        if (projectedMousePosition.get() != null) {
+            Tile tile = board.getRespectiveTile(projectedMousePosition.get().Value);
+            board.CurrentlyHovered = tile;
         }
     }
 }

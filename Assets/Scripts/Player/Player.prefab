@@ -294,6 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasdShift: {fileID: 11400000, guid: e725e4174bfc1704b9bd807a4f24ca14, type: 2}
   scrollShift: {fileID: 11400000, guid: 2f6f53b95b7592e4782de5d1fbeee022, type: 2}
+  projectedMousePosition: {fileID: 11400000, guid: 117dbeb412183d64b819e6af60d1aa9d, type: 2}
 --- !u!1 &1437516893005639682
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wasdShift: {fileID: 0}
   scrollShift: {fileID: 11400000, guid: 2f6f53b95b7592e4782de5d1fbeee022, type: 2}
+  leftMouseDownEvent: {fileID: 11400000, guid: d03d8ef126ef1494ea19bc5118dcceb5, type: 2}
+  rightMouseDownEvent: {fileID: 11400000, guid: 0ac181596a27baa4a9a93c7abb82836e, type: 2}
 --- !u!1 &5451167633267320946
 GameObject:
   m_ObjectHideFlags: 0
