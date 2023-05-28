@@ -12,4 +12,8 @@ public abstract class Reference<T> : ScriptableObject {
     public T get () {
         return this.reference;
     } 
+
+    public bool hasValue() {
+        return this.reference != null;
+    }
 }

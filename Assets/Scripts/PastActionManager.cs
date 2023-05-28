@@ -7,8 +7,6 @@ public class PastActionManager : MonoBehaviour {
     private bool previousTurnExists;
     private int currentViewingInitiative;
     private List<ActionRecord>[] lastTurnRecords;
-    // TODO:
-    private UnitState turnEndState;
     private bool atTurnEnd;
     void Awake() {
         resetLastTurnRecords();

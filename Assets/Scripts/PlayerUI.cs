@@ -23,9 +23,9 @@ public class PlayerUI : MonoBehaviour
             unitName.text = "No Unit Selected";
             unitHealth.gameObject.SetActive(false);
         } else {
-            unitName.text = selectedUnit.reference.baseStats.unitName;
+            unitName.text = selectedUnit.reference.unitCard.unitName;
             unitHealth.gameObject.SetActive(true);
-            unitHealth.text = "Health: " + selectedUnit.reference.currentStats.currentHp;
+            unitHealth.text = "Health: " + selectedUnit.reference.unitStatus.currentHp;
         }
     }
 }

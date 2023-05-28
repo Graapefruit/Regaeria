@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OrderHandler : MonoBehaviour {
+public class OrderHandler : MonoBehaviour {/*
     public GameObject orderPrefab;
     private Dictionary<Unit, Order> orders;
     private Board board;
@@ -67,5 +67,5 @@ public class OrderHandler : MonoBehaviour {
             Destroy(orders[unitOrder.Key].gameObject);
         }
         orders = new Dictionary<Unit, Order>();
-    }
+    }*/
 }

@@ -7,6 +7,7 @@ public class Board : MonoBehaviour {
     // it is a rectangle which encapsulates part of the hexagon, starting from the very left, to the start of the teeth on the right
     // Note: the hexagonal grid is stored in a 2D array of type odd-q: https://www.redblobgames.com/grids/hexagons/
     public UnitReference selectedUnit;
+    public GameEvent onNewUnitSelected;
     public GameObject tilePrefab;
     private const int BOARD_SIZE = 16;
     private const float TILE_SCALE = 0.6f;
@@ -40,10 +41,11 @@ public class Board : MonoBehaviour {
             }
             if (value != null) {
                 value.Selected = true;
-                selectedUnit.reference = value.unit;
+                selectedUnit.set(value.unit);
             } else {
-                selectedUnit.reference = null;
+                selectedUnit.set(null);
             }
+            onNewUnitSelected.Raise();
             currentlySelected = value;
         }
     }

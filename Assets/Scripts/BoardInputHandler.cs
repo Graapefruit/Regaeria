@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class BoardInputHandler : MonoBehaviour
 {
-    private Board board;
     public Vector3Reference projectedMousePosition;
-    private OrderHandler orderHandler;
+    public UnitReference selectedUnit;
+    private Board board;
 
     void Awake() {
         board = transform.GetComponent<Board>();
-        orderHandler = transform.GetComponent<OrderHandler>();
     }
 
     void Update() {
@@ -29,7 +28,7 @@ public class BoardInputHandler : MonoBehaviour
             Tile currentlySelected = board.CurrentlySelected;
             Tile currentlyHovered = board.CurrentlyHovered;
             if (currentlySelected != null && currentlyHovered != null && currentlySelected.unit != null) {
-                orderHandler.createOrder(currentlySelected, currentlyHovered);
+                //orderHandler.createOrder(currentlySelected, currentlyHovered);
             }
         }
     }
