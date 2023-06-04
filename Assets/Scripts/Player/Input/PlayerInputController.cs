@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 // All player inputs are to first go through this class for traceability
 public class PlayerInputController : MonoBehaviour
 {
     public Vector2Reference wasdShift;
     public FloatReference scrollShift;
+    public BoolReference isMouseOverBlockingUiElement;
     public GameEvent leftMouseDownEvent;
     public GameEvent rightMouseDownEvent;
-    private Vector3 lastMousePos;
 
     void Update()
     {
@@ -43,5 +44,24 @@ public class PlayerInputController : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) {
             rightMouseDownEvent.Raise();
         }
+
+        isMouseOverBlockingUiElement.set(mouseOverBlockingUiElement());
+    }
+
+    //https://forum.unity.com/threads/how-to-detect-if-mouse-is-over-ui.1025533/
+    private bool mouseOverBlockingUiElement() {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        List<RaycastResult> raysastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raysastResults);
+
+        for (int index = 0; index < raysastResults.Count; index++)
+        {
+            RaycastResult curRaysastResult = raysastResults[index];
+            if (curRaysastResult.gameObject.layer == LayerDefinitions.UI_BLOCKING_LAYER) {
+                return true;
+            }
+        }
+        return false;
     }
 }

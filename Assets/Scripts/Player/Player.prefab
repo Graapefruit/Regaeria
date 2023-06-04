@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 5359933320360402919}
   - component: {fileID: 3077747420927294807}
   - component: {fileID: 6661675810729990420}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: DoTurn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 8935401690165173715}
   - component: {fileID: 3163410814553497238}
   - component: {fileID: 7174061544199220625}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,3 +790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1f3a08bbfcb914f8265142ebdf224e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedUnit: {fileID: 0}
+  commandIconPrefab: {fileID: 0}
+  commandIcons: []

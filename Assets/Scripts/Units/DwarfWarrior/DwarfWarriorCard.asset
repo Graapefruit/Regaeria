@@ -16,3 +16,4 @@ MonoBehaviour:
   baseHp: 28
   unitCommands:
   - {fileID: 11400000, guid: 0a708355f7a8a96498d08c78af65f5d1, type: 2}
+  - {fileID: 11400000, guid: 0a708355f7a8a96498d08c78af65f5d1, type: 2}

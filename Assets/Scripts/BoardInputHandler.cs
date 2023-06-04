@@ -6,20 +6,24 @@ public class BoardInputHandler : MonoBehaviour
 {
     public Vector3Reference projectedMousePosition;
     public UnitReference selectedUnit;
+    public BoolReference isMouseOverBlockingUiElement;
     private Board board;
 
     void Awake() {
         board = transform.GetComponent<Board>();
     }
 
-    void Update() {
-        setTileAsHovered();
+    public void setTileAsSelected() {
+        if (projectedMousePosition.get() != null && !isMouseOverBlockingUiElement.get()) {
+            board.CurrentlySelected = board.getRespectiveTile(projectedMousePosition.get().Value);
+        }
     }
 
-    public void setTileAsSelected() {
-        if (projectedMousePosition.get() != null) {
-            Tile tile = board.getRespectiveTile(projectedMousePosition.get().Value);
-            board.CurrentlySelected = tile;
+    public void setTileAsHovered() {
+        if (projectedMousePosition.get() != null && !isMouseOverBlockingUiElement.get()) {
+            board.CurrentlyHovered = board.getRespectiveTile(projectedMousePosition.get().Value);
+        } else {
+            board.CurrentlyHovered = null;
         }
     }
 
@@ -30,13 +34,6 @@ public class BoardInputHandler : MonoBehaviour
             if (currentlySelected != null && currentlyHovered != null && currentlySelected.unit != null) {
                 //orderHandler.createOrder(currentlySelected, currentlyHovered);
             }
-        }
-    }
-
-    private void setTileAsHovered() {
-        if (projectedMousePosition.get() != null) {
-            Tile tile = board.getRespectiveTile(projectedMousePosition.get().Value);
-            board.CurrentlyHovered = tile;
         }
     }
 }
