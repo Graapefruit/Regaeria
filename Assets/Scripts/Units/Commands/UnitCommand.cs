@@ -7,8 +7,5 @@ using UnityEngine.UI;
 public class UnitCommand : ScriptableObject
 {
     // Ensure there are 6 entries here, even if most are null
-    public UnitAction[] actions;
-    public int manaCost;
-    public int rechargeTime;
     public Sprite uiImage;
 }

@@ -30,18 +30,17 @@ public class UICommandLister : MonoBehaviour
 
     private void generateNewCommandIcons() {
         if (selectedUnit.hasValue()) {
-            float baseOffset = (COMMAND_ICON_PADDING / 2) + (COMMAND_ICON_DIMENSIONS / 2);
-            Vector2 newPosition = new Vector2(baseOffset, baseOffset);
+            float xBaseOffset = (COMMAND_ICON_PADDING / 2) + (COMMAND_ICON_DIMENSIONS / 2);
+            Vector2 newPosition = new Vector2(xBaseOffset, 0.0f);
             foreach(UnitCommand unitCommand in this.selectedUnit.get().unitCard.unitCommands) {
                 GameObject newCommand = Instantiate(commandIconPrefab, Vector3.zero, Quaternion.identity);
                 newCommand.transform.SetParent(this.transform, false);
 
                 newCommand.GetComponent<RectTransform>().anchoredPosition = newPosition;
                 newCommand.GetComponent<Image>().sprite = unitCommand.uiImage;
-                Debug.Log(newCommand.GetComponent<RectTransform>().rect);
 
                 commandIcons.Add(newCommand);
-                newPosition.x += COMMAND_ICON_DIMENSIONS + COMMAND_ICON_PADDING;
+                newPosition.y -= COMMAND_ICON_DIMENSIONS + COMMAND_ICON_PADDING;
             }
         }
     }
