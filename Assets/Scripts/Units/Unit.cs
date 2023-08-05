@@ -5,7 +5,9 @@ using UnityEngine;
 public class Unit : MonoBehaviour {
     public UnitCard unitCard;
     public UnitStatus unitStatus;
-    public UnitCommand queuedCommand;
+    public UnitCommand queuedCommands;
+    public UnitCommand selectedCommand;
+    
     public Tile Tile {
         get { return tile; }
         set {

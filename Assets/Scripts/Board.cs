@@ -89,6 +89,10 @@ public class Board : MonoBehaviour {
         return null;
     }
 
+    // ========================= //
+    // ======== HELPERS ========
+    // ========================= //
+
     private List<Tile> getNeighbours(Tile tile) {
         List<Tile> tiles = new List<Tile>();
         int x = tile.index.x;

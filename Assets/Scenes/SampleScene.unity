@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitCard: {fileID: 11400000, guid: f150384e6ace6b449b4790ea178d50b1, type: 2}
   unitStatus: {fileID: 0}
-  queuedCommand: {fileID: 0}
+  queuedCommands: {fileID: 0}
   editorTile: {fileID: 0}
 --- !u!1 &207879994
 GameObject:

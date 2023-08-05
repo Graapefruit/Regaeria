@@ -36,4 +36,10 @@ public class BoardInputHandler : MonoBehaviour
             }
         }
     }
+
+    public void onIssueCommand() {
+        if (selectedUnit.hasValue()) {
+
+        }
+    }
 }
