@@ -7,6 +7,6 @@ public class UnitCard : ScriptableObject
 {
     public string unitName;
     public int baseHp;
-    public int[] initiatives;
+    public bool[] initiatives;
     public UnitCommand[] unitCommands;
 }
