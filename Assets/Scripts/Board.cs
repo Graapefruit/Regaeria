@@ -9,6 +9,7 @@ public class Board : MonoBehaviour {
     public UnitReference selectedUnit;
     public GameEvent onNewUnitSelected;
     public GameObject tilePrefab;
+
     private const int BOARD_SIZE = 16;
     private const float TILE_SCALE = 0.6f;
     private const float ROOT_THREE = 1.73205080757f;
@@ -16,11 +17,11 @@ public class Board : MonoBehaviour {
     private const float Z_START = ((BOARD_SIZE - 1) * TILE_SCALE);
     private const float HEXAGON_SIDE_LENGTH = 2 * TILE_SCALE / ROOT_THREE;
     private const float HEXAGON_TOOTH_LENGTH = TILE_SCALE / ROOT_THREE;
-
     private const float LAZY_BOX_LENGTH = HEXAGON_SIDE_LENGTH + HEXAGON_TOOTH_LENGTH;
     private const float LAZY_BOX_HEIGHT = 2 * TILE_SCALE;
     private const float GRID_LEFT_EDGE = X_START - ((HEXAGON_SIDE_LENGTH / 2) + HEXAGON_TOOTH_LENGTH);
     private const float GRID_TOP_EDGE = Z_START + TILE_SCALE;
+
     public Tile CurrentlyHovered {
         get { return currentlyHovered; }
         set {
@@ -49,19 +50,22 @@ public class Board : MonoBehaviour {
             currentlySelected = value;
         }
     }
+
     private Tile currentlyHovered;
     private Tile currentlySelected;
     private Tile[,] board;
+    
     void Awake() {
         board = new Tile[BOARD_SIZE, BOARD_SIZE];
         initializeBoard(tilePrefab);
     }
 
-    public Tile getRespectiveTile(Vector3 point) {
-        int xIndex = Mathf.FloorToInt((point.x - GRID_LEFT_EDGE) / LAZY_BOX_LENGTH);
-        int zIndex = Mathf.FloorToInt((GRID_TOP_EDGE - point.z + ((xIndex % 2) * -TILE_SCALE)) / LAZY_BOX_HEIGHT);
+    public Tile getRespectiveTile(Vector3? point) {
+        Vector3 verifiedPoint = point ?? Vector3.zero;
+        int xIndex = Mathf.FloorToInt((verifiedPoint.x - GRID_LEFT_EDGE) / LAZY_BOX_LENGTH);
+        int zIndex = Mathf.FloorToInt((GRID_TOP_EDGE - verifiedPoint.z + ((xIndex % 2) * -TILE_SCALE)) / LAZY_BOX_HEIGHT);
         if (tileExists(new Pair<int, int>(xIndex, zIndex))) {
-            return updateIndexFromLazyBoxToHexagon(point, xIndex, zIndex);
+            return updateIndexFromLazyBoxToHexagon(verifiedPoint, xIndex, zIndex);
         } else {
             return null;
         }
@@ -90,7 +94,7 @@ public class Board : MonoBehaviour {
     }
 
     // ========================= //
-    // ======== HELPERS ========
+    // ======== HELPERS ======== //
     // ========================= //
 
     private List<Tile> getNeighbours(Tile tile) {

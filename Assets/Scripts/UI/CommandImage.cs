@@ -10,9 +10,9 @@ public class CommandImage : MonoBehaviour {
     public RectTransform rectTransform;
     public Image image;
     public Graphic imageGraphic;
-    public UnitCommand command;
-    public UnitReference selectedUnitReference;
+    public CommandReference selectedCommandReference;
 
+    private UnitCommand currentCommand;
     private bool isSelected;
 
     public void initialize(UnitCommand unitCommand, Vector2 newPosition) {
@@ -20,9 +20,9 @@ public class CommandImage : MonoBehaviour {
         this.image.sprite = unitCommand.uiImage;
         this.imageGraphic = this.GetComponent<Graphic>();
         this.imageGraphic.color = unselectedColour;
-        this.command = unitCommand;
+        this.currentCommand = unitCommand;
 
-        this.isSelected = this.selectedUnitReference.get().selectedCommand == command;
+        this.isSelected = selectedCommandReference.get() == currentCommand;
         toggleSelect();
     }
 
@@ -40,12 +40,12 @@ public class CommandImage : MonoBehaviour {
     }
 
     private void selectCommand() {
-        this.selectedUnitReference.get().selectedCommand = command;
+        selectedCommandReference.set(currentCommand);
         this.imageGraphic.color = selectedColour;
     }
 
     private void deselectCommand() {
-        this.selectedUnitReference.get().selectedCommand = null;
+        selectedCommandReference.set(null);
         this.imageGraphic.color = unselectedColour;
     }
 }

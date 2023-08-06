@@ -122,4 +122,4 @@ MonoBehaviour:
   image: {fileID: 4621280945399077894}
   imageGraphic: {fileID: 4621280945399077894}
   command: {fileID: 0}
-  selectedUnitReference: {fileID: 11400000, guid: c22222c549137dc42a4929ced8b9b0bc, type: 2}
+  selectedCommandReference: {fileID: 11400000, guid: 6acc7ea949c93104ba92c65c95be9eda, type: 2}
