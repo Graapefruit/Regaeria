@@ -46,8 +46,6 @@ public class VisualizedOrder : MonoBehaviour {
     private GameObject getProperPrefab(Tile prevTile, Tile sourceTile, Tile destTile) {
         int incomingDirection = (int) AdjacencyHelper.getConnection(prevTile.index, sourceTile.index);
         int outgoingDirection = (int) AdjacencyHelper.getConnection(sourceTile.index, destTile.index);
-        Debug.Log(incomingDirection);
-        Debug.Log(outgoingDirection);
 
         int directionDifference = incomingDirection - outgoingDirection;
         directionDifference += directionDifference < 0 ? 6 : 0;

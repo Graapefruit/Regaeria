@@ -8,6 +8,7 @@ public class Unit : MonoBehaviour {
     public SubmittedCommand[] submittedCommands;
     public OrderManager orderManager;
     public VisualizedOrder visualizedOrder;
+    public GameEvent orderChangedEvent;
     
     // TODO: Serialize this?
     public Tile Tile {
@@ -73,9 +74,9 @@ public class Unit : MonoBehaviour {
 
         if (latestInitiative != -1) {
             SubmittedCommand newSubmittedCommand = new SubmittedCommand(command, tile);
-
-            this.submittedCommands[latestInitiative] = newSubmittedCommand;
+            submittedCommands[latestInitiative] = newSubmittedCommand;
             visualizedOrder.submitCommand(newSubmittedCommand);
+            orderChangedEvent.Raise();
         } else {
             Debug.LogWarning("Attempted to submit a command with no free next initiative");
         }

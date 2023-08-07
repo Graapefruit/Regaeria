@@ -177,6 +177,7 @@ MonoBehaviour:
   unitStatus: {fileID: 0}
   orderManager: {fileID: 966230424}
   visualizedOrder: {fileID: 1063249860}
+  orderChangedEvent: {fileID: 11400000, guid: fde20e22801051d4aacb8b9819d5bee5, type: 2}
   editorTile: {fileID: 0}
 --- !u!1 &207879994
 GameObject:
@@ -898,9 +899,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowStartPrefab: {fileID: 5882461388421717667, guid: 2d8c40ae8a4776d459709daa7747868f, type: 3}
   arrowStraightPrefab: {fileID: 2080155737553615116, guid: 650beaaeafcd48744b7e0e0cb21a4693, type: 3}
-  arrowBendWideLeftPrefab: {fileID: 5930094759736526172, guid: f1dfe4219cad2e8418c8bfd54c6304bf, type: 3}
+  arrowBendWideLeftPrefab: {fileID: 7442452082548734824, guid: f1dfe4219cad2e8418c8bfd54c6304bf, type: 3}
   arrowBendWideRightPrefab: {fileID: 9095999479489127196, guid: 7ac2ff0d545002e46aa6c069f734217c, type: 3}
-  arrowBendTightLeftPrefab: {fileID: 2014189801596537844, guid: 8adbc0feccf272b47802d8a8d8ca0209, type: 3}
+  arrowBendTightLeftPrefab: {fileID: 3137825267602775497, guid: 8adbc0feccf272b47802d8a8d8ca0209, type: 3}
   arrowBendTightRightPrefab: {fileID: 3068966548993049912, guid: baa53bf29bc357a49b0318219ceb61ae, type: 3}
   arrowEndPrefab: {fileID: 400630511017699993, guid: dff8c0b8cb2940942954fdc50660b404, type: 3}
   unit: {fileID: 176415588}
