@@ -29,17 +29,6 @@ public class BoardInputHandler : MonoBehaviour
         }
     }
 
-    // TODO: Unused/old?
-    public void doMove() {
-        if (projectedMousePosition.get() != null) {
-            Tile currentlySelected = board.CurrentlySelected;
-            Tile currentlyHovered = board.CurrentlyHovered;
-            if (currentlySelected != null && currentlyHovered != null && currentlySelected.unit != null) {
-                //orderHandler.createOrder(currentlySelected, currentlyHovered);
-            }
-        }
-    }
-
     public void onIssueCommand() {
         if (selectedUnit.hasValue() && selectedCommand.hasValue()) {
             Unit unit = selectedUnit.get();

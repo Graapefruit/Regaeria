@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f651bad2e6e4973448348cb01bfe9951, type: 3}
-  m_Name: MoveCommand
+  m_Name: DwarfWarriorMoveCommand
   m_EditorClassIdentifier: 
   uiImage: {fileID: 21300000, guid: ceaa19e0724162e448b483bffe09ea9a, type: 3}
+  repeatability: 2
   requiresBoardInput: 0
