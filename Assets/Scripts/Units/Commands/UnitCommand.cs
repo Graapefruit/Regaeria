@@ -8,4 +8,5 @@ public class UnitCommand : ScriptableObject {
     public Sprite uiImage;
     public int repeatability;
     public bool requiresBoardInput;
+    public string codifiedForm;
 }

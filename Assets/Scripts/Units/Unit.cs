@@ -6,9 +6,9 @@ public class Unit : MonoBehaviour {
     public UnitCard unitCard;
     public UnitStatus unitStatus;
     public SubmittedCommand[] submittedCommands;
-    public OrderManager orderManager;
     public VisualizedOrder visualizedOrder;
     public GameEvent orderChangedEvent;
+    public int id;
     
     // TODO: Serialize this?
     public Tile Tile {

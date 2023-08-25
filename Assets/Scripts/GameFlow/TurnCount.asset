@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f651bad2e6e4973448348cb01bfe9951, type: 3}
-  m_Name: DwarfWarriorMoveCommand
+  m_Script: {fileID: 11500000, guid: 1f1864f057103b347825b71306c9910a, type: 3}
+  m_Name: TurnCount
   m_EditorClassIdentifier: 
-  uiImage: {fileID: 21300000, guid: ceaa19e0724162e448b483bffe09ea9a, type: 3}
-  repeatability: 2
-  requiresBoardInput: 0
-  codifiedForm: <x>,<z>
+  reference: 0
